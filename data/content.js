@@ -33,7 +33,7 @@ window.PRS_CONTENT = {
     { place: "Ayurveda College and Hospital", ml: "ആയുർവേദ കോളേജും ആശുപത്രിയും" },
     { place: "Trivandrum International Airport", ml: "തിരുവനന്തപുരം അന്താരാഷ്ട്ര വിമാനത്താവളം" },
     { place: "Zephyr Entrance Coaching Centre", ml: "സെഫിർ എൻട്രൻസ് കോച്ചിംഗ് സെന്റർ" },
-    { place: "Remya and Dhanya cinema houses", ml: "രമ്യ, ധന്യ തിയേറ്ററുകൾ" }
+    { place: "Aries Plex SL Cinemas", ml: "ഏരീസ് പ്ലെക്സ് എസ്.എൽ. സിനിമാസ്" }
   ],
 
   gallery: [
