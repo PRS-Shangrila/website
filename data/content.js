@@ -31,8 +31,8 @@ window.PRS_CONTENT = {
   ],
 
   gallery: [
-    { image: "assets/img/building-exterior", widths: [480, 750], w: 750, h: 1235, caption: "The building from the street",
-      alt: "PRS Shangrila apartment building seen from the street corner, with its name on a tall white panel." },
+    { image: "assets/img/building-hero", widths: [480, 896], w: 896, h: 1200, caption: "The building from the street",
+      alt: "PRS Shangrila apartment building seen from the street, with its name on a tall white panel under a blue sky." },
     { image: "assets/img/building-facade", widths: [480, 750], w: 750, h: 1235, caption: "The front of the building",
       alt: "Front of the PRS Shangrila building looking up, with the name on a tall white panel between balconies." },
     { image: "assets/img/entrance-porch", widths: [480, 750], w: 750, h: 606, caption: "Entrance porch",
