@@ -1,0 +1,301 @@
+/* PRS Shangrila – shared stylesheet.
+   Same engine as the CSI Trivandrum site (tokens, cards, pills, theme, modern CSS), restyled for a residential community.
+   Change colours/spacing ONLY in the token blocks below; components use the tokens. */
+
+:root{
+  /* Colour tokens – light (default) */
+  --bg:#f4f6fa;--card:#ffffff;--ink:#16203a;--muted:#46506b;
+  --brand:#1d3f94;--brand-soft:#e6ecfa;--on-brand:#ffffff;
+  --line:#d5dcea;--gold:#8a5a00;--gold-soft:#fdf0d0;--focus:#b45f00;
+  --shadow:0 1px 2px rgba(22,32,58,.08);
+  /* Layout tokens */
+  --gutter:clamp(16px,4vw,64px);      /* side padding; the site is full width */
+  --prose:72ch;                         /* max line length for running text */
+  --radius:16px;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#0f131c;--card:#181e2b;--ink:#eef1f8;--muted:#b4bccf;
+  --brand:#a9c0ff;--brand-soft:#222b42;--on-brand:#0f131c;
+  --line:#323c56;--gold:#ffd27a;--gold-soft:#3a2f12;--focus:#ffc15a;
+  --shadow:none;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+img{max-width:100%;height:auto}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+
+/* Layout */
+.wrap{width:100%;padding-left:var(--gutter);padding-right:var(--gutter)}
+.prose{max-width:var(--prose)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--brand);color:var(--on-brand);padding:10px 16px;z-index:20;border-radius:6px}
+.skip:focus{left:8px}
+section{padding:48px 0 0}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.12;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.2;margin:0 0 8px;letter-spacing:-.01em}
+h3{font-size:1.2rem;margin:0 0 4px}
+.lead{color:var(--muted);margin:0 0 20px;max-width:var(--prose)}
+.chip{display:inline-block;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:.9rem;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+
+/* Header / navigation */
+header.site{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;text-decoration:none}
+.brand img{height:52px;width:auto;display:block;background:#fff;border-radius:8px;padding:2px 6px}
+.brand{flex-direction:column;align-items:flex-start;gap:0;line-height:1.1;color:var(--brand)}
+.wm{display:flex;align-items:baseline;gap:8px}
+.wm-prs{font-weight:700;letter-spacing:.14em;font-size:.85rem}
+.wm-name{font:700 1.7rem Georgia,"Times New Roman",serif;letter-spacing:.01em}
+.wm-sub{font-size:.8rem;color:var(--muted);margin-top:2px}
+.menu-btn{display:none;margin-left:auto;font:600 1rem inherit;min-height:44px;padding:8px 16px;border:1px solid var(--line);background:var(--brand-soft);color:var(--ink);border-radius:999px;cursor:pointer}
+nav.main{margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+nav.main a{text-decoration:none;color:var(--ink);font-weight:600;padding:10px 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:8px}
+nav.main a:hover{background:var(--brand-soft)}
+nav.main a[aria-current=page]{background:var(--brand);color:var(--on-brand)}
+.theme{font:600 1rem inherit;min-height:44px;padding:8px 16px;border:1px solid var(--line);background:var(--brand-soft);color:var(--ink);border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-left:6px}
+.theme:hover,.menu-btn:hover{border-color:var(--brand)}
+@media (max-width:980px){
+  .menu-btn{display:inline-flex;align-items:center}
+  nav.main{display:none;width:100%;margin-left:0;flex-direction:column;align-items:stretch;padding-bottom:10px}
+  nav.main.open{display:flex}
+  .theme{margin-left:0;justify-content:center}
+}
+
+/* Hero */
+.hero{padding-top:56px;padding-bottom:8px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero p{font-size:1.15rem;color:var(--muted);margin:0 0 12px;max-width:var(--prose)}
+.hero .pic{margin:0}
+.hero .pic img{width:100%;border-radius:20px;border:1px solid var(--line);display:block}
+.page-head{padding-top:48px}
+.crumbs{font-size:.95rem;color:var(--muted);margin:0 0 12px}
+.crumbs a{color:var(--muted)}
+
+/* Cards, stats, pills */
+.stats,.grid{display:grid;gap:16px;list-style:none;margin:0;padding:0}
+.stats{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.grid.wide{grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr))}
+.card,.stats li{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.card p{margin:6px 0 0;color:var(--muted)}
+.card.link{text-decoration:none;color:var(--ink);display:block}
+.card.link:hover{border-color:var(--brand)}
+.card .go{display:inline-block;margin-top:10px;font-weight:700;color:var(--brand)}
+.stats b{display:block;font-size:1.8rem;line-height:1.2;color:var(--brand)}
+.stats span{color:var(--muted);font-size:.95rem}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.pill{font-size:.85rem;font-weight:600;background:var(--brand-soft);color:var(--ink);padding:3px 10px;border-radius:999px}
+.figure{margin:0}
+.figure img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.figure figcaption{color:var(--muted);font-size:.95rem;margin-top:8px}
+.note{font-size:.95rem;background:var(--gold-soft);color:var(--ink);border-radius:10px;padding:10px 14px;margin:0 0 20px;max-width:var(--prose)}
+.empty{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 20px;border-radius:999px;background:var(--brand);color:var(--on-brand);font-weight:700;text-decoration:none}
+.btn:hover{opacity:.9}
+.list{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.list li{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center}
+.list li:last-child{border-bottom:0}
+.list small{color:var(--muted)}
+
+/* Tabs / filter */
+[role=tablist]{display:inline-flex;gap:4px;background:var(--brand-soft);padding:4px;border-radius:999px;margin-bottom:20px;flex-wrap:wrap}
+[role=tab]{font:600 1rem inherit;border:0;background:none;color:var(--muted);padding:8px 22px;min-height:44px;border-radius:999px;cursor:pointer}
+[role=tab]:hover{color:var(--ink)}
+[role=tab][aria-selected=true]{background:var(--brand);color:var(--on-brand)}
+.find{display:block;width:100%;max-width:420px;min-height:48px;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--muted);border-radius:10px;padding:10px 14px;margin-bottom:16px}
+label.lbl{display:block;color:var(--muted);margin-bottom:6px}
+
+/* Tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:1rem}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--brand-soft);font-size:.9rem;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td.yr{font-weight:700;color:var(--brand);white-space:nowrap}
+
+/* Footer */
+footer.site{margin-top:72px;background:var(--card);border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;padding-top:32px;padding-bottom:20px}
+.foot h3{font-size:1rem;color:var(--ink)}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{margin:2px 0}
+.foot a{display:inline-block;padding:4px 0}
+.legal{border-top:1px solid var(--line);padding-top:14px;padding-bottom:24px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:32px}
+}
+@media print{header.site,footer.site,.skip{display:none}body{background:#fff;color:#000}}
+
+/* Full-width text layouts (used by about.html) */
+.lead.wide{max-width:none}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:20px;align-items:start}
+.split .card{padding:clamp(20px,2.5vw,36px)}
+.split .card p{color:var(--ink);margin:0 0 12px}
+.flow{column-count:2;column-gap:clamp(24px,3vw,48px)}
+@media (max-width:1000px){.split{grid-template-columns:1fr}}
+@media (max-width:700px){.flow{column-count:1}}
+.note.wide{max-width:none}
+.stack{display:grid;gap:20px}
+
+/* Utility classes (replace inline styles so the Content-Security-Policy can forbid them) */
+.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mb-12{margin-bottom:12px}
+.tbl-cap{text-align:left;padding:12px 16px 0;caption-side:top;color:var(--muted);margin:0}
+
+/* Search row above the roll of honour: search box on the left, result count on the right, full width */
+.toolbar{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-bottom:16px}
+.toolbar .find{margin-bottom:0}
+.toolbar .count{margin:0;color:var(--muted)}
+.toolbar .search{flex:1 1 320px;max-width:420px}
+
+/* Full-width call-to-action card: text fills the width, button sits at the right (stacks on small screens) */
+.banner{display:flex;align-items:center;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;padding:clamp(20px,2.5vw,36px)}
+.banner > div{flex:1 1 480px}
+.banner p{color:var(--ink);margin:8px 0 0}
+.banner .btn{flex:0 0 auto}
+
+/* Portrait flyers in the home hero: keep them from becoming taller than the screen */
+.hero .pic img{max-height:min(78vh,720px);width:auto;max-width:100%;margin-left:auto;margin-right:auto}
+
+/* Tiles stretch to fill the row, so a few tiles still span the full width */
+.grid.fit{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+
+/* ===================================================================
+   Modern CSS features. Each block degrades gracefully: browsers that do
+   not support a feature simply skip it and the page looks the same, minus the effect.
+   =================================================================== */
+
+/* 1. View Transitions: smooth cross-fade between pages (Chrome, Edge, Safari 18.2+). The header stays put. */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  header.site{view-transition-name:site-header}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.2s}
+}
+
+/* 2. Scroll-driven animation: cards, tiles and rows fade and rise as they scroll into view */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    @keyframes reveal{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    .grid > *,.stats li,.list li,.banner,.split > *{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+  }
+}
+
+/* 3. Click-to-enlarge flyers: the thumbnail is a button, the enlarged view is a native <dialog> (built in site.js) */
+.zoom{display:block;width:100%;padding:0;margin:0;border:0;background:none;color:inherit;cursor:zoom-in;border-radius:12px}
+.zoom picture{display:block}
+.zoom img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line)}
+dialog.lightbox{padding:0;border:0;border-radius:16px;background:var(--card);color:var(--ink);max-width:min(96vw,1000px);max-height:96vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+dialog.lightbox::backdrop{background:rgba(8,12,24,.78)}
+dialog.lightbox[open]{animation:lb-in .18s ease-out}
+@keyframes lb-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.lb-img{display:block;max-width:100%;max-height:78vh;width:auto;height:auto;margin:0 auto}
+.lb-cap{margin:0;padding:12px 64px 16px 18px;font-size:.95rem;color:var(--muted)}
+.lb-close{position:absolute;top:8px;right:8px;width:44px;height:44px;border-radius:50%;border:0;background:var(--brand);color:var(--on-brand);font-size:1.7rem;line-height:1;cursor:pointer}
+body:has(dialog[open]){overflow:hidden}
+
+/* 4. Container queries: an event card lays itself out by its own width, not the screen width.
+      Narrow card: flyer above the text. Wide card: flyer on the left, text on the right. */
+.card.event{container-type:inline-size}
+.ev-layout{display:grid;gap:12px}
+.ev-body h3{margin-top:4px}
+@container (min-width:640px){
+  .ev-layout{grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:24px;align-items:start}
+  .ev-body h3{margin-top:0}
+}
+
+/* ===================================================================
+   PRS Shangrila components
+   =================================================================== */
+
+/* Malayalam text (30% of the copy). No font download: the best installed Malayalam font is used. */
+.ml,[lang="ml"]{font-family:"Noto Sans Malayalam","Nirmala UI","Kartika","Malayalam Sangam MN","Malayalam MN",system-ui,sans-serif;line-height:1.8}
+.ml{color:var(--muted)}
+h1 .ml,h2 .ml{display:block;font-size:.55em;font-weight:600;margin-top:6px;letter-spacing:0}
+.ml-line{display:block;margin-top:4px}
+
+/* Buttons and rows */
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.btn.alt{background:transparent;color:var(--brand);border:2px solid var(--brand)}
+.btn.alt:hover{background:var(--brand-soft);opacity:1}
+.btn.wa{background:#0b6b3a;color:#fff}
+:root[data-theme="dark"] .btn.wa{background:#4cc48a;color:#0f131c}
+
+/* "No brokers" notice: prominent but calm */
+.notice{display:flex;gap:16px;align-items:flex-start;background:var(--gold-soft);border:1px solid var(--gold);border-left-width:8px;border-radius:12px;padding:16px 20px;color:var(--ink)}
+.notice b{display:block;font-size:1.15rem}
+.notice p{margin:4px 0 0}
+
+/* Facts, lists, gallery */
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks li::before{content:"✓";color:var(--brand);font-weight:800;flex:0 0 auto}
+.checks small{display:block;color:var(--muted)}
+.gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));list-style:none;margin:0;padding:0}
+.gallery figure{margin:0}
+.gallery figcaption{color:var(--muted);font-size:.95rem;margin-top:6px}
+.gallery .zoom img{aspect-ratio:4/3;object-fit:cover}
+.fac{display:grid;gap:12px}
+.fac .zoom img{aspect-ratio:16/10;object-fit:cover}
+
+/* FAQ (native details/summary: keyboard and screen-reader friendly, no script) */
+.faq{display:grid;gap:10px;max-width:none}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 18px}
+.faq summary{cursor:pointer;font-weight:700;padding:14px 0;min-height:44px;list-style:revert}
+.faq details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+.faq .ans{padding-bottom:14px}
+
+/* Contact cards and call strip */
+.callstrip{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;background:var(--brand);color:var(--on-brand);border-radius:var(--radius);padding:clamp(20px,3vw,36px)}
+.callstrip h2{color:var(--on-brand);margin:0}
+.callstrip p{margin:6px 0 0;color:var(--on-brand)}
+.callstrip .btn{background:var(--on-brand);color:var(--brand)}
+.callstrip .btn.wa{background:#0b6b3a;color:#fff}
+.alert-bar{background:var(--brand-soft);border-bottom:1px solid var(--line);text-align:center;padding:8px var(--gutter);font-size:.95rem}
+.steps{margin:0;padding-left:1.3em;display:grid;gap:8px}
+.btn span[lang="ml"]{margin-left:.6em;padding-left:.6em;border-left:1px solid currentColor;opacity:.95}
+.callstrip h2 span[lang="ml"]{display:block;font-size:.7em;margin-top:4px}
+
+/* ===================================================================
+   Menu and page motion (added after review: the first version had only a 0.2s page fade and no menu motion).
+   Everything below is switched off for visitors who prefer reduced motion.
+   =================================================================== */
+@media (prefers-reduced-motion:no-preference){
+  /* 1. Page-to-page: a clearly visible cross-fade with a slight rise; the header stays in place (cross-document View Transitions) */
+  @view-transition{navigation:auto}
+  header.site{view-transition-name:site-header}
+  main{view-transition-name:page-main}
+  ::view-transition-group(root){animation-duration:.4s}
+  ::view-transition-old(page-main){animation:vt-out .22s ease-in both}
+  ::view-transition-new(page-main){animation:vt-in .38s cubic-bezier(.2,.7,.2,1) .06s both}
+  @keyframes vt-out{to{opacity:0;transform:translateY(-8px)}}
+  @keyframes vt-in{from{opacity:0;transform:translateY(14px)}}
+
+  /* 2. Desktop menu: smooth hover, focus and current-page changes */
+  nav.main a{transition:background-color .22s ease,color .22s ease,box-shadow .22s ease,transform .22s ease}
+  nav.main a:hover{transform:translateY(-1px)}
+  nav.main a[aria-current=page]{box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .theme,.menu-btn,.btn{transition:background-color .22s ease,border-color .22s ease,transform .15s ease,opacity .2s ease}
+  .btn:active,.theme:active,.menu-btn:active{transform:scale(.97)}
+  .card.link{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .card.link:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+
+  /* 3. Mobile menu: slides open instead of popping */
+  @media (max-width:980px){
+    nav.main.open{animation:menu-open .28s cubic-bezier(.2,.7,.2,1) both;transform-origin:top}
+    nav.main.open a{animation:menu-item .3s ease both}
+    nav.main.open a:nth-child(2){animation-delay:.03s}
+    nav.main.open a:nth-child(3){animation-delay:.06s}
+    nav.main.open a:nth-child(4){animation-delay:.09s}
+    nav.main.open a:nth-child(5){animation-delay:.12s}
+    nav.main.open a:nth-child(6){animation-delay:.15s}
+    nav.main.open a:nth-child(7){animation-delay:.18s}
+    nav.main.open a:nth-child(8){animation-delay:.21s}
+  }
+  @keyframes menu-open{from{opacity:0;transform:translateY(-10px) scaleY(.96)}}
+  @keyframes menu-item{from{opacity:0;transform:translateX(-10px)}}
+}
