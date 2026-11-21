@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://prsshangrila.in/sitemap.xml
