@@ -159,7 +159,7 @@
     },
     nearby: function (el) {
       el.innerHTML = '<ul class="checks">' + (DATA.nearby || []).map(function (n) {
-        return "<li><span>" + esc(n.place) + (n.ml ? '<small lang="ml" class="ml">' + esc(n.ml) + "</small>" : "") + "</span></li>";
+        return "<li><span>" + esc(n.place) + (n.note ? "<small>" + esc(n.note) + "</small>" : "") + (n.ml ? '<small lang="ml" class="ml">' + esc(n.ml) + "</small>" : "") + "</span></li>";
       }).join("") + "</ul>";
     },
     gallery: function (el) {
