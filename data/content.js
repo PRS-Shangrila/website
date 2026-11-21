@@ -6,7 +6,7 @@ window.PRS_CONTENT = {
     { value: "11 storeys", text: "Basement and ground-floor car parking" },
     { value: "25 apartments", text: "On the 9 floors above the ground floor" },
     { value: "300 m", text: "From Mahatma Gandhi Road, near Kunnumpuram Junction (Old GPO)" },
-    { value: "City centre", text: "Close to the Collectorate and the District Court" }
+    { value: "City centre", text: "Walkable to the Secretariat, AG's office and GPO; close to the Old Collectorate" }
   ],
 
   /* Facilities listed on the previous website; "lifts" is visible in the lobby photo. */
@@ -21,12 +21,18 @@ window.PRS_CONTENT = {
     { title: "Children's park and landscaped yards", ml: "കുട്ടികളുടെ പാർക്ക്", text: "A children's park and landscaped open yards." }
   ],
 
-  /* Places named on the previous website. Distances are not given there (TO CONFIRM). */
+  /* Places named on the previous website, plus places added by the site owner. No distances in kilometres are shown (TO CONFIRM).
+     Optional note: a short phrase shown under the place name, for example "Walkable distance". */
   nearby: [
+    { place: "Government Secretariat", note: "Walkable distance", ml: "ഗവൺമെന്റ് സെക്രട്ടേറിയറ്റ്" },
+    { place: "Accountant General's (AG's) Office", note: "Walkable distance", ml: "അക്കൗണ്ടന്റ് ജനറലിന്റെ (എ.ജി.) ഓഫീസ്" },
+    { place: "General Post Office (GPO)", note: "Walkable distance", ml: "ജനറൽ പോസ്റ്റ് ഓഫീസ് (ജി.പി.ഒ.)" },
+    { place: "Old Collectorate and District Court", ml: "പഴയ കളക്ടറേറ്റ്, ജില്ലാ കോടതി" },
     { place: "Railway station", ml: "റെയിൽവേ സ്റ്റേഷൻ" },
     { place: "Central bus station", ml: "സെൻട്രൽ ബസ് സ്റ്റേഷൻ" },
-    { place: "Collectorate and District Court", ml: "കളക്ടറേറ്റ്, ജില്ലാ കോടതി" },
     { place: "Ayurveda College and Hospital", ml: "ആയുർവേദ കോളേജും ആശുപത്രിയും" },
+    { place: "Trivandrum International Airport", ml: "തിരുവനന്തപുരം അന്താരാഷ്ട്ര വിമാനത്താവളം" },
+    { place: "Zephyr Entrance Coaching Centre", ml: "സെഫിർ എൻട്രൻസ് കോച്ചിംഗ് സെന്റർ" },
     { place: "Remya and Dhanya cinema houses", ml: "രമ്യ, ധന്യ തിയേറ്ററുകൾ" }
   ],
 
